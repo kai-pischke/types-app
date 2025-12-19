@@ -4,6 +4,7 @@ import { DndContext } from '@dnd-kit/core';
 import type { DragEndEvent } from '@dnd-kit/core';
 import { generateDefaultSeparators, analyzesSyntaxDirected } from '../../types/syntax';
 import type { Pattern, Term, Derivation, RuleFuncPredicate, FuncExpr } from '../../types/syntax';
+import { uuidv4 } from '../../utils/uuid';
 
 import { DraggableRule } from './DraggableRule';
 import { PatternEditor } from './PatternEditor';
@@ -309,7 +310,7 @@ export function RuleCanvas() {
       const atoms: Term[] = [];
       for (let i = 1; i <= 5; i++) {
         atoms.push({
-          id: crypto.randomUUID(),
+          id: uuidv4(),
           constructorId: '',
           args: [],
           isVariable: true,
@@ -337,7 +338,7 @@ export function RuleCanvas() {
         // Generate fewer atoms for nested positions
         for (let i = 1; i <= 3; i++) {
           atoms.push({
-            id: crypto.randomUUID(),
+            id: uuidv4(),
             constructorId: '',
             args: [],
             isVariable: true,
@@ -357,7 +358,7 @@ export function RuleCanvas() {
       for (const constructor of sConstructors) {
         if (constructor.args.length === 0) {
           if (depth === 0) {
-            terms.push({ id: crypto.randomUUID(), constructorId: constructor.id, args: [] });
+            terms.push({ id: uuidv4(), constructorId: constructor.id, args: [] });
           }
         } else if (depth > 0) {
           const argTermArrays: Term[][] = constructor.args.map(arg => {
@@ -371,7 +372,7 @@ export function RuleCanvas() {
           const generateCombinations = (index: number, current: Term[]): void => {
             if (terms.length > 30) return;
             if (index === argTermArrays.length) {
-              terms.push({ id: crypto.randomUUID(), constructorId: constructor.id, args: [...current] });
+              terms.push({ id: uuidv4(), constructorId: constructor.id, args: [...current] });
               return;
             }
             for (const term of argTermArrays[index].slice(0, 8)) {
@@ -919,7 +920,7 @@ export function RuleCanvas() {
                   const predicateOptions: { label: string; predicate: RuleFuncPredicate }[] = [];
                   
                   // Create a placeholder pattern (meta-variable placeholder)
-                  const placeholderPattern: Pattern = { id: crypto.randomUUID(), args: [] };
+                  const placeholderPattern: Pattern = { id: uuidv4(), args: [] };
                   
                   if (returnType.kind === 'int') {
                     // Integer predicates
@@ -934,8 +935,8 @@ export function RuleCanvas() {
                     predicateOptions.push(
                       { label: `${func.name}(…) = ∅`, predicate: { kind: 'isEmpty', funcId: func.id, arg: placeholderPattern } },
                       { label: `${func.name}(…) ≠ ∅`, predicate: { kind: 'notEmpty', funcId: func.id, arg: placeholderPattern } },
-                      { label: `x ∈ ${func.name}(…)`, predicate: { kind: 'in', funcId: func.id, arg: placeholderPattern, element: { id: crypto.randomUUID(), args: [] } } },
-                      { label: `x ∉ ${func.name}(…)`, predicate: { kind: 'notIn', funcId: func.id, arg: placeholderPattern, element: { id: crypto.randomUUID(), args: [] } } },
+                      { label: `x ∈ ${func.name}(…)`, predicate: { kind: 'in', funcId: func.id, arg: placeholderPattern, element: { id: uuidv4(), args: [] } } },
+                      { label: `x ∉ ${func.name}(…)`, predicate: { kind: 'notIn', funcId: func.id, arg: placeholderPattern, element: { id: uuidv4(), args: [] } } },
                     );
                   }
                   

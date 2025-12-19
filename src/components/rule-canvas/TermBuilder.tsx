@@ -1,6 +1,7 @@
 import React from 'react';
 import { useStore } from '../../store/useStore';
 import type { Term } from '../../types/syntax';
+import { uuidv4 } from '../../utils/uuid';
 
 interface TermBuilderProps {
   sortId: string;
@@ -41,7 +42,7 @@ export function TermBuilder({ sortId, value, onChange }: TermBuilderProps) {
                   onClick={(e) => {
                     e.stopPropagation();
                     onUpdate({
-                      id: crypto.randomUUID(),
+                      id: uuidv4(),
                       constructorId: '',
                       args: [],
                       isVariable: true,
@@ -73,13 +74,13 @@ export function TermBuilder({ sortId, value, onChange }: TermBuilderProps) {
                   e.stopPropagation();
                   if (c.args.length === 0) {
                     onUpdate({
-                      id: crypto.randomUUID(),
+                      id: uuidv4(),
                       constructorId: c.id,
                       args: [],
                     });
                   } else {
                     onUpdate({
-                      id: crypto.randomUUID(),
+                      id: uuidv4(),
                       constructorId: c.id,
                       args: c.args.map(() => null as unknown as Term),
                     });

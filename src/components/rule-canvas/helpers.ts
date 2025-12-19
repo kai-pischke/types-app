@@ -1,4 +1,5 @@
 import type { Pattern, JudgmentInstance, Term, InferenceRule, Constructor } from '../../types/syntax';
+import { uuidv4 } from '../../utils/uuid';
 
 // Check if a pattern is complete (has no empty placeholders)
 export function isPatternComplete(pattern: Pattern): boolean {
@@ -82,7 +83,7 @@ export function substitutePattern(pattern: Pattern, bindings: Map<string, Term>)
       args.push(argTerm);
     }
     return {
-      id: crypto.randomUUID(),
+      id: uuidv4(),
       constructorId: pattern.constructorId,
       args,
     };

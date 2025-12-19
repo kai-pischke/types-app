@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { v4 as uuidv4 } from 'uuid';
+import { uuidv4 } from '../utils/uuid';
 import type {
   Sort,
   SortId,
@@ -765,7 +765,7 @@ export const useStore = create<StoreState>((set, get) => ({
         conclusion: {
           ...ruleData.conclusion,
           args: [
-            { id: crypto.randomUUID(), constructorId: zeroC.id, args: [] },
+            { id: uuidv4(), constructorId: zeroC.id, args: [] },
           ],
         },
       });
@@ -785,14 +785,14 @@ export const useStore = create<StoreState>((set, get) => ({
         premises: [{
           ...ruleData.premises[0],
           args: [
-            { id: crypto.randomUUID(), metaVariableId: nVar.id, args: [] },
+            { id: uuidv4(), metaVariableId: nVar.id, args: [] },
           ],
         }],
         conclusion: {
           ...ruleData.conclusion,
           args: [
-            { id: crypto.randomUUID(), constructorId: succC.id, args: [
-              { id: crypto.randomUUID(), metaVariableId: nVar.id, args: [] }
+            { id: uuidv4(), constructorId: succC.id, args: [
+              { id: uuidv4(), metaVariableId: nVar.id, args: [] }
             ]},
           ],
         },
@@ -813,14 +813,14 @@ export const useStore = create<StoreState>((set, get) => ({
         premises: [{
           ...ruleData.premises[0],
           args: [
-            { id: crypto.randomUUID(), metaVariableId: nVar.id, args: [] },
+            { id: uuidv4(), metaVariableId: nVar.id, args: [] },
           ],
         }],
         conclusion: {
           ...ruleData.conclusion,
           args: [
-            { id: crypto.randomUUID(), constructorId: succC.id, args: [
-              { id: crypto.randomUUID(), metaVariableId: nVar.id, args: [] }
+            { id: uuidv4(), constructorId: succC.id, args: [
+              { id: uuidv4(), metaVariableId: nVar.id, args: [] }
             ]},
           ],
         },

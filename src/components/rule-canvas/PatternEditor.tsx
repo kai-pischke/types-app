@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useStore } from '../../store/useStore';
 import type { Pattern } from '../../types/syntax';
+import { uuidv4 } from '../../utils/uuid';
 
 interface PatternEditorProps {
   pattern: Pattern;
@@ -46,7 +47,7 @@ export function PatternEditor({ pattern, sortId, onUpdate, onClose }: PatternEdi
     if (!constructor) return;
 
     const newArgs: Pattern[] = constructor.args.map(() => ({
-      id: crypto.randomUUID(),
+      id: uuidv4(),
       args: [],
     }));
 
