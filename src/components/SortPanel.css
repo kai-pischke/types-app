@@ -1,0 +1,367 @@
+.sort-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.panel-section {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.section-header h3 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+}
+
+.section-header svg {
+  opacity: 0.6;
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-3);
+}
+
+.add-form input[type="text"] {
+  width: 100%;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 13px;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent-primary);
+}
+
+.form-actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+/* Form Groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.form-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-tertiary);
+}
+
+/* Kind Toggle */
+.kind-toggle {
+  display: flex;
+  gap: 2px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  padding: 2px;
+}
+
+.toggle-btn {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.toggle-btn:hover {
+  color: var(--text-primary);
+}
+
+.toggle-btn.active {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.kind-hint {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+/* Input states */
+.input-empty {
+  border-color: var(--border-default) !important;
+}
+
+.prefix-input {
+  width: 100%;
+}
+
+/* Atom Info Section */
+.atom-info-section {
+  padding: var(--space-3);
+}
+
+.atom-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+}
+
+.atom-preview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.atom-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.atom-examples {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.atom-properties {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.atom-property {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 12px;
+  padding: var(--space-2);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+}
+
+.atom-property.bindable {
+  color: var(--binder-color);
+  border-left: 2px solid var(--binder-color);
+}
+
+.atom-property.unbindable {
+  color: var(--accent-warning);
+  border-left: 2px solid var(--accent-warning);
+}
+
+.atom-property svg {
+  flex-shrink: 0;
+}
+
+/* Badge for atom sorts */
+.badge-atom {
+  background: rgba(245, 158, 11, 0.2);
+  color: var(--accent-warning);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.sort-item.atom-sort {
+  border-left: 3px solid var(--accent-warning);
+}
+
+.sort-item.atom-sort.selected {
+  border-left-color: var(--accent-warning);
+}
+
+.sort-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.sort-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-tertiary);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  animation: slideIn 0.2s ease forwards;
+}
+
+.sort-item:hover {
+  background: var(--bg-elevated);
+  border-color: var(--border-subtle);
+}
+
+.sort-item.selected {
+  background: var(--gradient-subtle);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 1px rgba(88, 166, 255, 0.2);
+}
+
+.sort-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.sort-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.delete-btn {
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.sort-item:hover .delete-btn,
+.constructor-item:hover .delete-btn {
+  opacity: 1;
+}
+
+.delete-btn:hover {
+  color: var(--accent-danger) !important;
+}
+
+/* Constructors section */
+.constructors-section {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.constructor-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.constructor-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  animation: slideIn 0.2s ease forwards;
+}
+
+.constructor-signature {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.constructor-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.constructor-args {
+  font-size: 13px;
+}
+
+.arg-label {
+  color: var(--text-tertiary);
+}
+
+.binder-indicator {
+  color: var(--binder-color);
+  font-size: 10px;
+  vertical-align: super;
+  margin-left: 1px;
+}
+
+/* Add constructor form */
+.add-constructor {
+  margin-top: auto;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.constructor-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.constructor-name-input {
+  width: 100%;
+}
+
+.args-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.arg-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.arg-label-input {
+  width: 80px;
+  font-size: 13px;
+  padding: var(--space-1) var(--space-2);
+}
+
+.arg-sort-select {
+  flex: 1;
+  font-size: 13px;
+  padding: var(--space-1) var(--space-2);
+}
+
+.constructor-form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.constructor-form-actions .btn {
+  flex: 1;
+}
+
+.constructor-form-actions .btn-ghost {
+  flex: 0;
+}
+
